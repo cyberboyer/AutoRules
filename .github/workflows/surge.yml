@@ -1,4 +1,4 @@
-name: Auto Download Rulesets
+name: Auto Download Surge Rulesets
 
 on:
   schedule:
@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
+        with:
+          persist-credentials: true
 
       - name: Prepare Directory
         run: |
