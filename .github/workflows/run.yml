@@ -1,0 +1,55 @@
+name: Sync .list and payload yaml with metadata
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 21 * * *'
+
+jobs:
+  sync-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Add metadata to .list files in Ruleset and generate Providers .yaml
+        run: |
+          shopt -s globstar
+
+          for src_file in Ruleset/**/*.list; do
+            base=$(basename "$src_file" .list)
+            now=$(date '+%Y-%m-%d %H:%M:%S')
+            content=$(grep -Ev '^\s*#\s*NAME:|^\s*#\s*UPDATED:|^\s*#\s*TOTAL:' "$src_file")
+            total=$(echo "$content" | grep -Ev '^\s*$|^\s*#' | wc -l)
+
+            {
+              echo "# NAME: $base"
+              echo "# UPDATED: $now"
+              echo "# TOTAL: $total"
+              echo "$content"
+            } > "$src_file"
+
+            dst_file="Providers/${src_file#Ruleset/}"
+            dst_file="${dst_file%.list}.yaml"
+            dst_dir=$(dirname "$dst_file")
+            mkdir -p "$dst_dir"
+
+            {
+              echo "# NAME: $base"
+              echo "# UPDATED: $now"
+              echo "# TOTAL: $total"
+              echo "payload:"
+              echo "$content" | grep -Ev '^\s*$|^\s*#' | awk '{print "  - "$0}'
+            } > "$dst_file"
+          done
+
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Ruleset/**/*.list Providers/**/*.yaml
+          git commit -m "Sync metadata for .list and .yaml files" || echo "No changes"
+          git push
