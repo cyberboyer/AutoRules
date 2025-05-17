@@ -1,3 +1,6 @@
+# NAME: LocalAreaNetwork
+# UPDATED: 2025-05-17 05:23:35
+# TOTAL: 34
 # 本地/局域网地址
 DOMAIN-SUFFIX,ip6-localhost
 DOMAIN-SUFFIX,ip6-loopback

@@ -1,3 +1,6 @@
+# NAME: Download
+# UPDATED: 2025-05-17 05:23:35
+# TOTAL: 22
 # Mac Download
 PROCESS-NAME,aria2c.exe
 PROCESS-NAME,fdm.exe
