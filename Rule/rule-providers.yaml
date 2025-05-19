@@ -89,6 +89,12 @@ rule-providers:
     url: https://raw.githubusercontent.com/cyberboyer/AutoRules/main/Rule/Providers/Chat/Whatsapp.yaml
     path: ./ruleset/Chat/Whatsapp.yaml
     interval: 86400
+  apple:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/cyberboyer/AutoRules/main/Rule/Providers/China/Apple.yaml
+    path: ./ruleset/China/Apple.yaml
+    interval: 86400
   chinacompanyip:
     type: http
     behavior: classical
