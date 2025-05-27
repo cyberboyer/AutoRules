@@ -77,12 +77,6 @@ rule-providers:
     url: https://raw.githubusercontent.com/cyberboyer/AutoRules/main/Rule/Providers/Chat/Telegram.yaml
     path: ./ruleset/Chat/Telegram.yaml
     interval: 86400
-  wechat:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/cyberboyer/AutoRules/main/Rule/Providers/Chat/WeChat.yaml
-    path: ./ruleset/Chat/WeChat.yaml
-    interval: 86400
   whatsapp:
     type: http
     behavior: classical
@@ -214,12 +208,6 @@ rule-providers:
     behavior: classical
     url: https://raw.githubusercontent.com/cyberboyer/AutoRules/main/Rule/Providers/Video/Netflix.yaml
     path: ./ruleset/Video/Netflix.yaml
-    interval: 86400
-  proxymedia:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/cyberboyer/AutoRules/main/Rule/Providers/Video/ProxyMedia.yaml
-    path: ./ruleset/Video/ProxyMedia.yaml
     interval: 86400
   tiktok:
     type: http

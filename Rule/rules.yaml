@@ -12,7 +12,6 @@ rules:
   - RULE-SET,slack,Proxy
   - RULE-SET,teams,Proxy
   - RULE-SET,telegram,Proxy
-  - RULE-SET,wechat,Proxy
   - RULE-SET,whatsapp,Proxy
   - RULE-SET,apple,DIRECT
   - RULE-SET,chinacompanyip,DIRECT
@@ -35,7 +34,6 @@ rules:
   - RULE-SET,bilibilihmt,Proxy
   - RULE-SET,chinamedia,Proxy
   - RULE-SET,netflix,Proxy
-  - RULE-SET,proxymedia,Proxy
   - RULE-SET,tiktok,Proxy
   - RULE-SET,youtube,Proxy
   - MATCH,Proxy
